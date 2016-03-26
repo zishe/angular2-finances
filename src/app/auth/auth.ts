@@ -21,4 +21,7 @@ export class Auth {
     console.log('hello `Auth` component');
   }
 
+  login(): void {
+    
+  }
 }

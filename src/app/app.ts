@@ -34,6 +34,8 @@ import {AppState} from './app.service';
   `],
   template: `
     <header>
+      <auth></auth>
+
       <nav>
         <h1>Hello {{ name }}</h1>
         <ul>
@@ -51,7 +53,6 @@ import {AppState} from './app.service';
     </header>
 
     <main>
-      <auth></auth>
       <router-outlet></router-outlet>
     </main>
 
