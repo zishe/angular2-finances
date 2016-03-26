@@ -50,6 +50,7 @@ import {AppState} from './app.service';
     </header>
 
     <main>
+      <auth></auth>
       <router-outlet></router-outlet>
     </main>
 
