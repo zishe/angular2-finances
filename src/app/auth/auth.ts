@@ -10,7 +10,7 @@ console.log('`Auth` component loaded asynchronously');
 
 @Component({
   selector: 'auth',
-  templateUrl: `auth.html`
+  templateUrl: 'app/auth/auth.html'
 })
 export class Auth {
   constructor() {
