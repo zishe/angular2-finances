@@ -5,6 +5,7 @@ import {Component} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 
 import {Home} from './home';
+import {Auth} from './auth';
 import {AppState} from './app.service';
 
 /*
@@ -15,7 +16,7 @@ import {AppState} from './app.service';
   selector: 'app',
   pipes: [ ],
   providers: [ ],
-  directives: [ ],
+  directives: [ Auth ],
   styles: [`
     nav ul {
       display: inline;
