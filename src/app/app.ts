@@ -4,7 +4,9 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 
-import {Home} from './home/home';
+import {Home} from './home';
+import {Auth} from './auth';
+import {AppState} from './app.service';
 
 /*
  * App Component
@@ -14,7 +16,7 @@ import {Home} from './home/home';
   selector: 'app',
   pipes: [ ],
   providers: [ ],
-  directives: [ ],
+  directives: [ Auth ],
   styles: [`
     nav ul {
       display: inline;
@@ -49,6 +51,7 @@ import {Home} from './home/home';
     </header>
 
     <main>
+      <auth></auth>
       <router-outlet></router-outlet>
     </main>
 
@@ -58,20 +61,31 @@ import {Home} from './home/home';
         <img [src]="angularclassLogo" width="10%">
       </div>
     </footer>
+
+    <pre>this.state = {{ state | json }}</pre>
   `
 })
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  { path: '/about', name: 'About', loader: () => require('es6-promise!./about/about')('About') },
+  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
-  constructor() {
+
+  constructor(public appState: AppState) {}
+
+  get state() {
+    return this.appState.get();
   }
+
+  ngOnInit() {
+    console.log('Initial App State', this.state);
+  }
+
 }
 
 /*
